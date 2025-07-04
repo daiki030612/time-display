@@ -1,42 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI; //Text‚ğg—p‚·‚éˆ×’Ç‰ÁB
-using System; //DateTime‚ğg—p‚·‚éˆ×’Ç‰ÁB
+using TMPro; // TextMeshProã‚’ä½¿ã†å ´åˆ
+using System;
 
 public class Timetext : MonoBehaviour
 {
-    //ƒeƒLƒXƒgUI‚ğƒhƒ‰ƒbƒO&ƒhƒƒbƒv
-    [SerializeField] Text DateTimeText;
-
-    //DateTime‚ğg‚¤‚½‚ß•Ï”‚ğİ’è
-    DateTime TodayNow;
+    [SerializeField] TextMeshProUGUI DateTimeText;
 
     void Update()
     {
-        //ŠÔ‚ğæ“¾
-        TodayNow = DateTime.Now;
+        // DateTimeTextãŒnullã§ãªã„ã‹ãƒã‚§ãƒƒã‚¯
+        if (DateTimeText == null)
+        {
+            Debug.LogError("DateTimeText ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚Inspectorã§ TextMeshPro ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚");
+            return;
+        }
 
-        //ƒeƒLƒXƒgUI‚É”NEŒE“úE•b‚ğ•\¦‚³‚¹‚é
-        DateTimeText.text = TodayNow.Year.ToString() + "”N " + TodayNow.Month.ToString() + "Œ" + TodayNow.Day.ToString() + "“ú" + DateTime.Now.ToLongTimeString();
-    }
-}
-using UnityEngine;
-using UnityEngine.UI; //Text‚ğg—p‚·‚éˆ×’Ç‰ÁB
-using System; //DateTime‚ğg—p‚·‚éˆ×’Ç‰ÁB
-
-public class Timetext : MonoBehaviour
-{
-    //ƒeƒLƒXƒgUI‚ğƒhƒ‰ƒbƒO&ƒhƒƒbƒv
-    [SerializeField] Text DateTimeText;
-
-    //DateTime‚ğg‚¤‚½‚ß•Ï”‚ğİ’è
-    DateTime TodayNow;
-
-    void Update()
-    {
-        //ŠÔ‚ğæ“¾
-        TodayNow = DateTime.Now;
-
-        //ƒeƒLƒXƒgUI‚É”NEŒE“úE•b‚ğ•\¦‚³‚¹‚é
-        DateTimeText.text = TodayNow.Year.ToString() + "”N " + TodayNow.Month.ToString() + "Œ" + TodayNow.Day.ToString() + "“ú" + DateTime.Now.ToLongTimeString();
+        DateTime now = DateTime.Now;
+        DateTimeText.text = now.ToString("yyyyå¹´MMæœˆddæ—¥ HH:mm:ss");
     }
 }
